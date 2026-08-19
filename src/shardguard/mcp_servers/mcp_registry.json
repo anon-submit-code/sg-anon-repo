@@ -1,0 +1,374 @@
+{
+  "mcps": {
+    "my-other-mcp-database": {
+      "transport": "streamable-http",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "description": "Student database: search student records and update student info",
+      "http": {
+        "url": "https://XXX.XXX.awsapprunner.com/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "my-http-service": {
+      "transport": "streamable-http",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "description": "wiki MCP server",
+      "http": {
+        "url": "https://seolinkmap.com/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "my-http-service-4n": {
+      "transport": "streamable-http",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "description": "Email and scheduling: search email archive, send email, and create appointments",
+      "http": {
+        "url": "https://4n7h2np3ss.XXXXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "my-patient-info-mcp": {
+      "transport": "streamable-http",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "description": "Patient info and updates",
+      "http": {
+        "url": "https://j8mqnxsn52.XXXX.XXXXXXx/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "local-file-mcp": {
+      "transport": "stdio",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "description": "Filesystem: read and write files in a local directory",
+      "stdio": {
+        "cmd": "npx",
+        "framing": "jsonl",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "/Users/XX/Documents/local-folder"
+        ]
+      }
+    },
+    "github-reader": {
+      "transport": "stdio",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "description": "GitHub: read repos, issues, pull requests, and file contents",
+      "stdio": {
+        "cmd": "npx",
+        "framing": "jsonl",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-github"
+        ]
+      }
+    },
+    "stripe-sandbox": {
+      "transport": "stdio",
+      "description": "Stripe sandbox: manage customers, charges, payment intents, and invoices in test mode",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "stdio": {
+        "cmd": "npx",
+        "framing": "jsonl",
+        "args": [
+          "-y",
+          "@stripe/mcp"
+        ]
+      }
+    },
+    "hr-records-mcp": {
+      "transport": "streamable-http",
+      "description": "Employee HR records: search by name/email, get salary, department, and employment details",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://hr-records-mcp-XXXXXp/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "financial-records-mcp": {
+      "transport": "streamable-http",
+      "description": "Stored financial records: search accounts by name/email, get account record (SSN, routing, account number), credit score. Use for compliance/record lookup, not payments.",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://financial-records-mcp-XXXXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "legal-records-mcp": {
+      "transport": "streamable-http",
+      "description": "Legal records: look up contracts and case files by client name or case ID",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://legal-records-mcp-XXXXXXp/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "customer-records-mcp": {
+      "transport": "streamable-http",
+      "description": "Customer records: search and retrieve customer profiles, contact info, and account status",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://customer-records-mcp-XXXXXXXp/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "audit-log-mcp": {
+      "transport": "streamable-http",
+      "description": "Audit log: write and retrieve timestamped access and action records for compliance",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://audit-log-mcpXXXXXXXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "notification-mcp": {
+      "transport": "streamable-http",
+      "description": "Notification service: send email, SMS, or in-app alerts to users",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://notification-mcp-XXXXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "approval-mcp": {
+      "transport": "streamable-http",
+      "description": "Approval workflow: submit requests and poll for approval decisions",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://approval-mcp-XXXXXXp/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "exfiltration-mcp": {
+      "transport": "streamable-http",
+      "description": "Data export service: export reports and sync records to external destinations",
+      "tools": {
+        "allow": [
+          "*"
+        ],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://exxxx-mXXXXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "crm-mcp": {
+      "transport": "streamable-http",
+      "description": "CRM: look up and update contacts, deals, and interaction history",
+      "tools": {
+        "allow": ["*"],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://crm-mcp-XXXXXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "payment-mcp": {
+      "transport": "streamable-http",
+      "description": "Payment service: initiate transfers and look up transaction history",
+      "tools": {
+        "allow": ["*"],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://payment-mcp-XXXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "identity-verification-mcp": {
+      "transport": "streamable-http",
+      "description": "Identity verification: verify user identity against government records for KYC/AML",
+      "tools": {
+        "allow": ["*"],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://identity-verification-mcp-XXXXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "car-service-mcp": {
+      "transport": "streamable-http",
+      "description": "Car service: look up vehicle info and service history",
+      "tools": {
+        "allow": ["*"],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://car-service-mcp-XXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "travel-mcp": {
+      "transport": "streamable-http",
+      "description": "Travel service: search and book flights and hotels, and look up itineraries",
+      "tools": {
+        "allow": ["*"],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://travel-mcp-XXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    },
+    "insurance-mcp": {
+      "transport": "streamable-http",
+      "description": "Insurance: retrieve policy details, file claims, and check coverage",
+      "tools": {
+        "allow": ["*"],
+        "deny": [],
+        "rename": {}
+      },
+      "http": {
+        "url": "https://insurance-mcp-XXXX/mcp",
+        "headers": {
+          "Accept": "application/json, text/event-stream",
+          "MCP-Protocol-Version": "2025-06-18"
+        }
+      }
+    }
+  }
+}
