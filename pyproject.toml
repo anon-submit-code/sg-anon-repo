@@ -1,0 +1,25 @@
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "shardguard"
+version = "0.1.0"
+description = "Per-step opaque value scoping for multi-step LLM agents"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "typer[all]>=0.16.0,<0.17.0",
+    "rich>=14.0.0,<15.0.0",
+    "httpx[http2]>=0.28.1,<0.29.0",
+    "mcp>=1.0.0",
+    "python-dotenv>=1.0.0,<2.0.0",
+    "openai>=2.14.0,<3.0.0",
+    "google-genai>=1.57.0,<2.0.0",
+]
+
+[project.scripts]
+shardguard = "shardguard.cli:app"
+
+[tool.poetry]
+packages = [{include = "shardguard", from = "src"}]
